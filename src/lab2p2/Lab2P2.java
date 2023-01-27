@@ -69,8 +69,16 @@ public class Lab2P2 {
                         System.out.println(">>> USTED NO ES ADMIN <<<");
                     }
                 }
+                
                 case 2 -> {
+                    if (!bienes.isEmpty()) {
+                        listar();
+                    }else{
+                        System.out.println(">>> NO HAY BIENES <<<\n");
+                    }
+                    
                 }
+                
                 case 3 -> {
                     if (x == 1) {
 
@@ -88,6 +96,59 @@ public class Lab2P2 {
                 case 5 -> {
                 }
 
+            }
+        }
+    }
+    static void listar() {
+        System.out.println("""
+                           Listar:
+                           1- Casas
+                           2- Edificios
+                           3- Solares
+                           4- Todo""");
+        rm = new Scanner(System.in);
+        int opc = rm.nextInt();
+        
+        switch(opc){
+            case 1 -> {
+                
+                for (Object b : bienes) {
+                    if (b instanceof Casas) {
+                        System.out.println("casa "+bienes.indexOf(b)+": "+b);
+                    }
+                }
+                
+            }
+            case 2 -> {
+                
+                for (Object b : bienes) {
+                    if (b instanceof Edificios) {
+                        System.out.println("Edificio "+bienes.indexOf(b)+": "+b);
+                    }
+                }
+                
+            }
+            case 3 -> {
+                
+                for (Object b : bienes) {
+                    if (b instanceof Solares) {
+                        System.out.println("Solar "+bienes.indexOf(b)+": "+b);
+                    }
+                }
+                
+            }
+            case 4 -> {
+                for (Object b : bienes) {
+                    if (b instanceof Casas) {
+                        System.out.println("casa "+bienes.indexOf(b)+": "+b);
+                    }
+                    if (b instanceof Edificios) {
+                        System.out.println("Edificio "+bienes.indexOf(b)+": "+b);
+                    }
+                    if (b instanceof Solares) {
+                        System.out.println("Solar "+bienes.indexOf(b)+": "+b);
+                    }
+                }
             }
         }
     }
@@ -240,5 +301,7 @@ public class Lab2P2 {
         }
 
     }
+
+    
 
 }
