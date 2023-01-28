@@ -36,6 +36,7 @@ public class Lab2P2 {
                         registro();
                         break;
                     case 2:
+                        estado();
                         break;
                     case 3:
                         login();
@@ -48,7 +49,95 @@ public class Lab2P2 {
         }
     }//fin main
 
-    private static void registro() {
+    static void estado() {
+        System.out.println("""
+                           Cambiar estado:
+                           1- Casa
+                           2- Edificio
+                           """);
+        rm = new Scanner(System.in);
+        int opc = rm.nextInt();
+        switch (opc) {
+            case 1 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Casas) {
+                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY CASA ---");
+                } else {
+
+                    System.out.print("Ingrese la posicion de la casa a cambiar estado: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Casas) {
+                        System.out.print("""
+                                         Ingrese estado: 
+                                         1- Lista
+                                         2- En Construccion
+                                         3- Contruccion en espera
+                                         4- En espera de Demolicion""");
+                        rm = new Scanner(System.in);
+                        int m = rm.nextInt();
+                        switch(m){
+                            case 1 -> ((Casas) bienes.get(o)).setEstado("Lista");
+                            case 2 -> ((Casas) bienes.get(o)).setEstado("En Construccion");
+                            case 3 -> ((Casas) bienes.get(o)).setEstado("Contruccion en espera");
+                            case 4 -> ((Casas) bienes.get(o)).setEstado("En espera de Demolicion");
+                        }
+                        
+                        System.out.println("< ESTADO ACTUALIZADO >\n");
+                    } else {
+                        System.out.println("Posicion no valida");
+                    }
+                }
+
+            }
+            case 2 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Edificios) {
+                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY EDIFICIOS ---");
+                } else {
+                    System.out.print("Ingrese la posicion del edificio a cambiar estado: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
+                        System.out.print("""
+                                         Ingrese estado: 
+                                         1- Lista
+                                         2- En Construccion
+                                         3- Contruccion en espera
+                                         4- En espera de Demolicion""");
+                        rm = new Scanner(System.in);
+                        int m = rm.nextInt();
+                        switch(m){
+                            case 1 -> ((Edificios) bienes.get(o)).setEstado("Lista");
+                            case 2 -> ((Edificios) bienes.get(o)).setEstado("En Construccion");
+                            case 3 -> ((Edificios) bienes.get(o)).setEstado("Contruccion en espera");
+                            case 4 -> ((Edificios) bienes.get(o)).setEstado("En espera de Demolicion");
+                        }
+                        
+                        System.out.println("< ESTADO ACTUALIZADO >\n");
+                    } else {
+                        System.out.println("Posicion no valida");
+                    }
+                }
+            }
+        }
+    }
+
+    static void registro() {
         boolean d = true;
         while (d) {
             System.out.println("""
@@ -57,7 +146,8 @@ public class Lab2P2 {
                            2- Listar Casas/Edificios/Solares
                            3- Modificar Casas/Edificios/Solares
                            4- Borrar Casas/Edificios/Solares
-                           5- Comprar Casas/Edificios/Solares\n""");
+                           5- Comprar Casas/Edificios/Solares
+                           6- Menu\n""");
             rm = new Scanner(System.in);
             int opc = rm.nextInt();
 
@@ -101,10 +191,12 @@ public class Lab2P2 {
                 case 5 -> {
                     comprar();
                 }
+                case 6->{d=false;}
 
             }
         }
     }
+
     static void comprar() {
         System.out.println("""
                            Comprar:
@@ -134,7 +226,7 @@ public class Lab2P2 {
                         System.out.print("Ingrese su nombre: ");
                         rm = new Scanner(System.in);
                         String duenio = rm.nextLine();
-                        ((Casas)bienes.get(o)).setDuenio(duenio);
+                        ((Casas) bienes.get(o)).setDuenio(duenio);
                         System.out.println("< CASA COMPRADA!!! >");
                     } else {
                         System.out.println("Posicion no valida");
@@ -161,12 +253,12 @@ public class Lab2P2 {
                         System.out.print("Ingrese su nombre: ");
                         rm = new Scanner(System.in);
                         String duenio = rm.nextLine();
-                        ((Edificios)bienes.get(o)).setDuenio(duenio);
+                        ((Edificios) bienes.get(o)).setDuenio(duenio);
                         System.out.println("< EDIFICIO COMPRADO!!! >");
-                        }else {
+                    } else {
                         System.out.println("Posicion no valida");
                     }
-                    }
+                }
             }
 
             case 3 -> {
@@ -188,9 +280,9 @@ public class Lab2P2 {
                         System.out.print("Ingrese su nombre: ");
                         rm = new Scanner(System.in);
                         String duenio = rm.nextLine();
-                        ((Solares)bienes.get(o)).setDuenio(duenio);
+                        ((Solares) bienes.get(o)).setDuenio(duenio);
                         System.out.println("< SOLAR COMPRADo!!! >");
-                    }else {
+                    } else {
                         System.out.println("Posicion no valida");
                     }
                 }
@@ -198,6 +290,7 @@ public class Lab2P2 {
             }
         }
     }
+
     static void modificar() {
         System.out.println("""
                            Modificar:
@@ -396,6 +489,7 @@ public class Lab2P2 {
     }
 
     static void listar() {
+        String lista="",cons="",consesp="",demo="";
         System.out.println("""
                            Listar:
                            1- Casas
@@ -410,12 +504,34 @@ public class Lab2P2 {
                 int z = 0;
                 for (Object b : bienes) {
                     if (b instanceof Casas) {
-                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
-                        z += 1;
+                        if (  ((Casas) b).getEstado().equals("Lista")  ) {
+                            lista+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("En Construccion")) {
+                            cons+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("Construccion en Espera")) {
+                            consesp+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("En espera de Demolicion")) {
+                            demo+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            z += 1;
+                        }
+                        
+                        
+                        
                     }
                 }
                 if (z == 0) {
                     System.out.println("--- NO HAY CASA ---");
+                }else{
+                    System.out.println(lista);
+                    System.out.println(cons);
+                    System.out.println(consesp);
+                    System.out.println(demo);
                 }
 
             }
@@ -496,10 +612,10 @@ public class Lab2P2 {
                 rm = new Scanner(System.in);
                 int largo = rm.nextInt();
 
-                System.out.print("Ingrese color de casa: (SALE ATRAS DEL NETBEANS)");
+                System.out.println("Ingrese color de casa: (SALE ATRAS DEL NETBEANS)");
                 Color c = JColorChooser.showDialog(null, "Ingrese color de la casa", Color.yellow);
 
-                bienes.add(new Casas(numcasa, numbloque, ancho, largo, numbanios, numcuartos, c, "Sin dueño", "Construcción en Espera"));
+                bienes.add(new Casas(numcasa, numbloque, ancho, largo, numbanios, numcuartos, c, "Sin dueño", "Construccion en Espera"));
                 System.out.println("-> AGREGADA EXITOSAMENTE <-");
             }
             case 2 -> {
@@ -559,7 +675,7 @@ public class Lab2P2 {
                 rm = new Scanner(System.in);
                 String contra = rm.nextLine();
                 usu.add(new Usuarios(nombre, user, contra, edad));
-                
+
                 System.out.println("== " + nombre + " SIGN UP EXITOSO ==\n");
             }
 
@@ -576,7 +692,7 @@ public class Lab2P2 {
                         k = i;
                     }
                 }
-                
+
                 if (y) {
                     System.out.print("Ingrese contraseña: ");
                     rm = new Scanner(System.in);
@@ -662,10 +778,10 @@ public class Lab2P2 {
                     if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
                         bienes.remove(o);
                         System.out.println("< EDIFICIO ELIMINADO >");
-                        }else {
+                    } else {
                         System.out.println("Posicion no valida");
                     }
-                    }
+                }
             }
 
             case 3 -> {
@@ -686,7 +802,7 @@ public class Lab2P2 {
                     if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Solares) {
                         bienes.remove(o);
                         System.out.println("< SOLAR ELIMINADO >");
-                    }else {
+                    } else {
                         System.out.println("Posicion no valida");
                     }
                 }
@@ -694,7 +810,5 @@ public class Lab2P2 {
             }
         }
     }
-
-    
 
 }
