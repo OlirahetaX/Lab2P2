@@ -42,6 +42,11 @@ public class Solares {
     public void setDuenio(String duenio) {
         this.duenio = duenio;
     }
+
+    @Override
+    public String toString() {
+        return "Ancho=" + ancho + ", Largo=" + largo + ", Area=" + area + ", Duenio=" + duenio + '}';
+    }
     
 
 }

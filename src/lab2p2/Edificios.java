@@ -62,5 +62,10 @@ public class Edificios {
     public void setDuenio(String duenio) {
         this.duenio = duenio;
     }
+
+    @Override
+    public String toString() {
+        return "Numero de pisos= " + numpisos + ", Cantidad de locales= " + locales + ", Dirección por referencia= " + direccion + ", Estado=" + estado + ", Duenio=" + duenio;
+    }
     
 }

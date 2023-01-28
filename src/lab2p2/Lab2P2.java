@@ -69,18 +69,23 @@ public class Lab2P2 {
                         System.out.println(">>> USTED NO ES ADMIN <<<");
                     }
                 }
-                
+
                 case 2 -> {
                     if (!bienes.isEmpty()) {
                         listar();
-                    }else{
+                    } else {
                         System.out.println(">>> NO HAY BIENES <<<\n");
                     }
-                    
+
                 }
-                
+
                 case 3 -> {
                     if (x == 1) {
+                        if (!bienes.isEmpty()) {
+                            modificar();
+                        } else {
+                            System.out.println(">>> NO HAY BIENES <<<");
+                        }
 
                     } else {
                         System.out.println(">>> USTED NO ES ADMIN <<<");
@@ -99,6 +104,204 @@ public class Lab2P2 {
             }
         }
     }
+
+    private static void modificar() {
+        System.out.println("""
+                           Modificar:
+                           1- Casa
+                           2- Edificio
+                           3- Solar""");
+        rm = new Scanner(System.in);
+        int opc = rm.nextInt();
+        switch (opc) {
+            case 1 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Casas) {
+                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY CASA ---");
+                } else {
+
+                    System.out.print("Ingrese la posicion de la casa a modificar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Casas) {
+
+                        System.out.println("""
+                                       
+                                       Modificar:
+                                       1- Numero de Casa
+                                       2- Numero de Bloque
+                                       3- Color
+                                       4- Ancho 
+                                       5- Largo
+                                       6- Numero de Baños
+                                       7- Numero de Cuartos
+                                       
+                                       """);
+                        rm = new Scanner(System.in);
+                        int op = rm.nextInt();
+                        switch (op) {
+                            case 1 -> {
+                                System.out.print("Ingrese nuevo numero de casa: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setNumcasa(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+
+                            }
+                            case 2 -> {
+                                System.out.print("Ingrese nuevo numero de Bloque: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setNumbloque(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 3 -> {
+                                System.out.print("Ingrese nuevo color de casa: (SALE ATRAS DEL NETBEANS)");
+                                Color u = JColorChooser.showDialog(null, "Ingrese nuevo Color", ((Casas) bienes.get(o)).getC());
+                                ((Casas) bienes.get(o)).setC(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 4 -> {
+                                System.out.print("Ingrese nuevo ancho de casa: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setAncho(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 5 -> {
+                                System.out.print("Ingrese nuevo largo de casa: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setLargo(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 6 -> {
+                                System.out.print("Ingrese nuevo numero de Baños: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setNumbanios(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 7 -> {
+                                System.out.print("Ingrese nuevo numero de cuartos: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Casas) bienes.get(o)).setNumcuartos(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+
+                        }
+
+                    } else {
+                        System.out.println("Posicion no valida");
+                    }
+                }
+
+            }
+            case 2 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Edificios) {
+                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY EDIFICIOS ---");
+                } else {
+                    System.out.print("Ingrese la posicion del edificio a modificar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
+                        System.out.println("""
+                                           
+                                           Modificar:
+                                           1- Número de pisos
+                                           2- Cantidad de locales
+                                           3- Dirección por referencia
+                                           """);
+                        rm = new Scanner(System.in);
+                        int op = rm.nextInt();
+                        switch (op) {
+                            case 1 -> {
+                                System.out.print("Ingrese nuevo numero de pisos: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Edificios) bienes.get(o)).setNumpisos(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 2 -> {
+                                System.out.print("Ingrese nuevo numero de locales: ");
+                                rm = new Scanner(System.in);
+                                int u = rm.nextInt();
+                                ((Edificios) bienes.get(o)).setLocales(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+                            case 3 -> {
+                                System.out.print("Ingrese nueva Dirección por referencia: ");
+                                rm = new Scanner(System.in);
+                                String u = rm.nextLine();
+                                ((Edificios) bienes.get(o)).setDireccion(u);
+                                System.out.println("-- Cambio hecho exitosamente --");
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            case 3 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Edificios) {
+                        System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY SOLARES ---");
+                } else {
+                    System.out.print("Ingrese la posicion del solar a modificar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
+                        System.out.println("""
+                                           
+                                           Modificar:
+                                           1- Ancho
+                                           2- Largo
+                                           """);
+                        rm = new Scanner(System.in);
+                        int op = rm.nextInt();
+                        if (op == 1) {
+                            System.out.print("Ingrese nuevo Ancho: ");
+                            rm = new Scanner(System.in);
+                            int u = rm.nextInt();
+                            ((Solares) bienes.get(o)).setAncho(u);
+                            System.out.println("-- Cambio hecho exitosamente --");
+                        } else {
+                            System.out.print("Ingrese nuevo Largo: ");
+                            rm = new Scanner(System.in);
+                            int u = rm.nextInt();
+                            ((Solares) bienes.get(o)).setLargo(u);
+                            System.out.println("-- Cambio hecho exitosamente --");
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
     static void listar() {
         System.out.println("""
                            Listar:
@@ -108,45 +311,55 @@ public class Lab2P2 {
                            4- Todo""");
         rm = new Scanner(System.in);
         int opc = rm.nextInt();
-        
-        switch(opc){
+
+        switch (opc) {
             case 1 -> {
-                
+                int z = 0;
                 for (Object b : bienes) {
                     if (b instanceof Casas) {
-                        System.out.println("casa "+bienes.indexOf(b)+": "+b);
+                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
                     }
                 }
-                
+                if (z == 0) {
+                    System.out.println("--- NO HAY CASA ---");
+                }
+
             }
             case 2 -> {
-                
+                int z = 0;
                 for (Object b : bienes) {
                     if (b instanceof Edificios) {
-                        System.out.println("Edificio "+bienes.indexOf(b)+": "+b);
+                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
                     }
                 }
-                
+                if (z == 0) {
+                    System.out.println("--- NO HAY EDIFICIOS ---");
+                }
             }
             case 3 -> {
-                
+                int z = 0;
                 for (Object b : bienes) {
                     if (b instanceof Solares) {
-                        System.out.println("Solar "+bienes.indexOf(b)+": "+b);
+                        System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
                     }
                 }
-                
+                if (z == 0) {
+                    System.out.println("--- NO HAY SOLARES ---");
+                }
             }
             case 4 -> {
                 for (Object b : bienes) {
                     if (b instanceof Casas) {
-                        System.out.println("casa "+bienes.indexOf(b)+": "+b);
+                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
                     }
                     if (b instanceof Edificios) {
-                        System.out.println("Edificio "+bienes.indexOf(b)+": "+b);
+                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
                     }
                     if (b instanceof Solares) {
-                        System.out.println("Solar "+bienes.indexOf(b)+": "+b);
+                        System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
                     }
                 }
             }
@@ -190,6 +403,7 @@ public class Lab2P2 {
                 rm = new Scanner(System.in);
                 int largo = rm.nextInt();
 
+                System.out.print("Ingrese color de casa: (SALE ATRAS DEL NETBEANS)");
                 Color c = JColorChooser.showDialog(null, "Ingrese color de la casa", Color.yellow);
 
                 bienes.add(new Casas(numcasa, numbloque, ancho, largo, numbanios, numcuartos, c, "Sin dueño", "Construcción en Espera"));
@@ -199,15 +413,15 @@ public class Lab2P2 {
                 System.out.println("Ingrese Numero de pisos");
                 rm = new Scanner(System.in);
                 int numpisos = rm.nextInt();
-                
+
                 System.out.println("Ingrese cantidad de locales");
                 rm = new Scanner(System.in);
                 int locales = rm.nextInt();
-                
+
                 System.out.println("Ingrese Dirección por referencia");
                 rm = new Scanner(System.in);
                 String direccion = rm.nextLine();
-                
+
                 bienes.add(new Edificios(numpisos, locales, direccion, "Construcción en Espera", "Sin dueño"));
                 System.out.println("-> AGREGADA EXITOSAMENTE <-");
             }
@@ -219,7 +433,7 @@ public class Lab2P2 {
                 System.out.println("Ingrese Largo");
                 rm = new Scanner(System.in);
                 int largos = rm.nextInt();
-                
+
                 bienes.add(new Solares(anchos, largos, "Sin duenio"));
                 System.out.println("-> AGREGADA EXITOSAMENTE <-");
             }
@@ -228,15 +442,16 @@ public class Lab2P2 {
 
     static void login() {
         System.out.println("--------------------");
-        System.out.println("1- Sign up\n"
-                + "2- Log in\n"
-                + "3- Log out\n");
+        System.out.println("""
+                           1- Sign up
+                           2- Log in
+                           3- Log out
+                           """);
         rm = new Scanner(System.in);
         int opc = rm.nextInt();
 
         switch (opc) {
-            case 1:
-
+            case 1 -> {
                 System.out.print("Ingrese nombre: ");
                 rm = new Scanner(System.in);
                 String nombre = rm.nextLine();
@@ -252,9 +467,9 @@ public class Lab2P2 {
                 String contra = rm.nextLine();
                 usu.add(new Usuarios(nombre, user, contra, edad));
                 System.out.println("== " + nombre + " SIGN UP EXITOSO ==\n");
-                break;
+            }
 
-            case 2:
+            case 2 -> {
                 int k = 0;
                 boolean y = false;
                 System.out.print("Ingrese username: ");
@@ -264,7 +479,7 @@ public class Lab2P2 {
                 for (int i = 0; i < usu.size(); i++) {
                     if (((Usuarios) usu.get(i)).getUser().equals(usern)) {
                         y = true;
-                        k=i;
+                        k = i;
                     }
                 }
                 if (y) {
@@ -272,36 +487,32 @@ public class Lab2P2 {
                     rm = new Scanner(System.in);
                     String contras = rm.nextLine();
 
-                        if (((Usuarios) usu.get(k)).getContra().equals(contras)) {
+                    if (((Usuarios) usu.get(k)).getContra().equals(contras)) {
 
-                            System.out.println("== " + ((Usuarios) usu.get(k)).getNombre() + " LOG IN EXITOSO ==\n");
+                        System.out.println("== " + ((Usuarios) usu.get(k)).getNombre() + " LOG IN EXITOSO ==\n");
 
-                            if (usern.equals("admin") && contras.equals("admin1234")) {
-                                x = 1;
-                            } else {
-                                x = 2;
-                            }
-
+                        if (usern.equals("admin") && contras.equals("admin1234")) {
+                            x = 1;
                         } else {
-                            System.out.println(">>> CONTRASENIA INCORRECTA <<<\n");
+                            x = 2;
                         }
+
+                    } else {
+                        System.out.println(">>> CONTRASENIA INCORRECTA <<<\n");
+                    }
 
                 } else {
                     System.out.println(">>> El usuario no existe <<<\n");
                 }
-
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println(
                         "== LOG OUT EXITOSO ==");
                 x = 0;
-
-                break;
+            }
 
         }
 
     }
-
-    
 
 }
