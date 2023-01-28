@@ -45,7 +45,7 @@ public class Solares {
 
     @Override
     public String toString() {
-        return "Ancho=" + ancho + ", Largo=" + largo + ", Area=" + area + ", Duenio=" + duenio + '}';
+        return "Ancho=" + ancho + ", Largo=" + largo + ", Area=" + area + ", Duenio=" + duenio + "\n";
     }
     
 

@@ -104,7 +104,7 @@ public class Casas {
 
     @Override
     public String toString() {
-        return "Numero de Casa= " + numcasa + ", Numero de Bloque= " + numbloque + ", ancho= " + ancho + ", largo= " + largo + ", Numero de Baños= " + numbanios + ", Numero de Cuartos= " + numcuartos + ", Color= " + c + ", Duenio= " + duenio + ", Estado=" + estado + '}';
+        return "Numero de Casa= " + numcasa + ", Numero de Bloque= " + numbloque + ", ancho= " + ancho + ", largo= " + largo + ", Numero de Baños= " + numbanios + ", Numero de Cuartos= " + numcuartos + ", Color= " + c + ", Duenio= " + duenio + ", Estado=" + estado + "\n";
     }
     
 }

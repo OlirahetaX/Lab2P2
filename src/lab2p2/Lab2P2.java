@@ -80,16 +80,21 @@ public class Lab2P2 {
                                          1- Lista
                                          2- En Construccion
                                          3- Contruccion en espera
-                                         4- En espera de Demolicion""");
+                                         4- En espera de Demolicion
+                                         """);
                         rm = new Scanner(System.in);
                         int m = rm.nextInt();
-                        switch(m){
-                            case 1 -> ((Casas) bienes.get(o)).setEstado("Lista");
-                            case 2 -> ((Casas) bienes.get(o)).setEstado("En Construccion");
-                            case 3 -> ((Casas) bienes.get(o)).setEstado("Contruccion en espera");
-                            case 4 -> ((Casas) bienes.get(o)).setEstado("En espera de Demolicion");
+                        switch (m) {
+                            case 1 ->
+                                ((Casas) bienes.get(o)).setEstado("Lista");
+                            case 2 ->
+                                ((Casas) bienes.get(o)).setEstado("En Construccion");
+                            case 3 ->
+                                ((Casas) bienes.get(o)).setEstado("Contruccion en espera");
+                            case 4 ->
+                                ((Casas) bienes.get(o)).setEstado("En espera de Demolicion");
                         }
-                        
+
                         System.out.println("< ESTADO ACTUALIZADO >\n");
                     } else {
                         System.out.println("Posicion no valida");
@@ -118,16 +123,21 @@ public class Lab2P2 {
                                          1- Lista
                                          2- En Construccion
                                          3- Contruccion en espera
-                                         4- En espera de Demolicion""");
+                                         4- En espera de Demolicion
+                                         """);
                         rm = new Scanner(System.in);
                         int m = rm.nextInt();
-                        switch(m){
-                            case 1 -> ((Edificios) bienes.get(o)).setEstado("Lista");
-                            case 2 -> ((Edificios) bienes.get(o)).setEstado("En Construccion");
-                            case 3 -> ((Edificios) bienes.get(o)).setEstado("Contruccion en espera");
-                            case 4 -> ((Edificios) bienes.get(o)).setEstado("En espera de Demolicion");
+                        switch (m) {
+                            case 1 ->
+                                ((Edificios) bienes.get(o)).setEstado("Lista");
+                            case 2 ->
+                                ((Edificios) bienes.get(o)).setEstado("En Construccion");
+                            case 3 ->
+                                ((Edificios) bienes.get(o)).setEstado("Contruccion en espera");
+                            case 4 ->
+                                ((Edificios) bienes.get(o)).setEstado("En espera de Demolicion");
                         }
-                        
+
                         System.out.println("< ESTADO ACTUALIZADO >\n");
                     } else {
                         System.out.println("Posicion no valida");
@@ -191,7 +201,9 @@ public class Lab2P2 {
                 case 5 -> {
                     comprar();
                 }
-                case 6->{d=false;}
+                case 6 -> {
+                    d = false;
+                }
 
             }
         }
@@ -489,7 +501,8 @@ public class Lab2P2 {
     }
 
     static void listar() {
-        String lista="",cons="",consesp="",demo="";
+        String lista = "", cons = "", consesp = "", demo = "",solar2="";
+        int z = 0;
         System.out.println("""
                            Listar:
                            1- Casas
@@ -501,54 +514,69 @@ public class Lab2P2 {
 
         switch (opc) {
             case 1 -> {
-                int z = 0;
+
                 for (Object b : bienes) {
                     if (b instanceof Casas) {
-                        if (  ((Casas) b).getEstado().equals("Lista")  ) {
-                            lista+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                        if (((Casas) b).getEstado().equals("Lista")) {
+                            lista += "casa " + bienes.indexOf(b) + ": " + b;
                             z += 1;
                         }
                         if (((Casas) b).getEstado().equals("En Construccion")) {
-                            cons+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            cons += "casa " + bienes.indexOf(b) + ": " + b;
                             z += 1;
                         }
                         if (((Casas) b).getEstado().equals("Construccion en Espera")) {
-                            consesp+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            consesp += "casa " + bienes.indexOf(b) + ": " + b;
                             z += 1;
                         }
                         if (((Casas) b).getEstado().equals("En espera de Demolicion")) {
-                            demo+="casa "+bienes.indexOf(b)+": "+b+"\n";
+                            demo += "casa " + bienes.indexOf(b) + ": " + b;
                             z += 1;
                         }
-                        
-                        
-                        
                     }
                 }
                 if (z == 0) {
                     System.out.println("--- NO HAY CASA ---");
-                }else{
-                    System.out.println(lista);
-                    System.out.println(cons);
-                    System.out.println(consesp);
-                    System.out.println(demo);
+                } else {
+                    System.out.print(lista);
+                    System.out.print(cons);
+                    System.out.print(consesp);
+                    System.out.print(demo);
                 }
 
             }
             case 2 -> {
-                int z = 0;
+                
                 for (Object b : bienes) {
                     if (b instanceof Edificios) {
-                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
-                        z += 1;
+                        if (((Edificios) b).getEstado().equals("Lista")) {
+                            lista += "Edificio " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("En Construccion")) {
+                            cons += "Edificio " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("Construccion en Espera")) {
+                            consesp += "Edificio " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("En espera de Demolicion")) {
+                            demo += "Edificio " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
                     }
                 }
                 if (z == 0) {
                     System.out.println("--- NO HAY EDIFICIOS ---");
+                }else {
+                    System.out.print(lista);
+                    System.out.print(cons);
+                    System.out.print(consesp);
+                    System.out.print(demo);
                 }
             }
             case 3 -> {
-                int z = 0;
                 for (Object b : bienes) {
                     if (b instanceof Solares) {
                         System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
@@ -562,15 +590,51 @@ public class Lab2P2 {
             case 4 -> {
                 for (Object b : bienes) {
                     if (b instanceof Casas) {
-                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
+                        if (((Casas) b).getEstado().equals("Lista")) {
+                            lista += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("En Construccion")) {
+                            cons += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("Construccion en Espera")) {
+                            consesp += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Casas) b).getEstado().equals("En espera de Demolicion")) {
+                            demo += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
                     }
                     if (b instanceof Edificios) {
-                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
+                        if (((Edificios) b).getEstado().equals("Lista")) {
+                            lista += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("En Construccion")) {
+                            cons += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("Construccion en Espera")) {
+                            consesp += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
+                        if (((Edificios) b).getEstado().equals("En espera de Demolicion")) {
+                            demo += "casa " + bienes.indexOf(b) + ": " + b;
+                            z += 1;
+                        }
                     }
                     if (b instanceof Solares) {
-                        System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
+                        solar2+="Solar " + bienes.indexOf(b) + ": " + b;
                     }
                 }
+                
+                    System.out.print(lista);
+                    System.out.print(cons);
+                    System.out.print(consesp);
+                    System.out.print(demo);
+                    System.out.print(solar2);
             }
         }
     }
@@ -631,7 +695,7 @@ public class Lab2P2 {
                 rm = new Scanner(System.in);
                 String direccion = rm.nextLine();
 
-                bienes.add(new Edificios(numpisos, locales, direccion, "Construcción en Espera", "Sin dueño"));
+                bienes.add(new Edificios(numpisos, locales, direccion, "Construccion en Espera", "Sin dueño"));
                 System.out.println("-> AGREGADA EXITOSAMENTE <-");
             }
             case 3 -> {
