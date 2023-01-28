@@ -93,7 +93,7 @@ public class Lab2P2 {
                 }
                 case 4 -> {
                     if (x == 1) {
-
+                        borrar();
                     } else {
                         System.out.println(">>> USTED NO ES ADMIN <<<");
                     }
@@ -261,7 +261,7 @@ public class Lab2P2 {
             case 3 -> {
                 int z = 0;
                 for (Object b : bienes) {
-                    if (b instanceof Edificios) {
+                    if (b instanceof Solares) {
                         System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
                         z += 1;
                     }
@@ -273,7 +273,7 @@ public class Lab2P2 {
                     rm = new Scanner(System.in);
                     int o = rm.nextInt();
 
-                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Solares) {
                         System.out.println("""
                                            
                                            Modificar:
@@ -513,6 +513,91 @@ public class Lab2P2 {
 
         }
 
+    }
+
+    private static void borrar() {
+        System.out.println("""
+                           Borrar:
+                           1- Casa
+                           2- Edificio
+                           3- Solar""");
+        rm = new Scanner(System.in);
+        int opc = rm.nextInt();
+        switch (opc) {
+            case 1 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Casas) {
+                        System.out.println("casa " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY CASA ---");
+                } else {
+
+                    System.out.print("Ingrese la posicion de la casa a borrar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Casas) {
+                        bienes.remove(o);
+                        System.out.println("< CASA ELIMINADA >");
+                    } else {
+                        System.out.println("Posicion no valida");
+                    }
+                }
+
+            }
+            case 2 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Edificios) {
+                        System.out.println("Edificio " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY EDIFICIOS ---");
+                } else {
+                    System.out.print("Ingrese la posicion del edificio a modificar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Edificios) {
+                        bienes.remove(o);
+                        System.out.println("< EDIFICIO ELIMINADO >");
+                        }else {
+                        System.out.println("Posicion no valida");
+                    }
+                    }
+            }
+
+            case 3 -> {
+                int z = 0;
+                for (Object b : bienes) {
+                    if (b instanceof Solares) {
+                        System.out.println("Solar " + bienes.indexOf(b) + ": " + b);
+                        z += 1;
+                    }
+                }
+                if (z == 0) {
+                    System.out.println("--- NO HAY SOLARES ---");
+                } else {
+                    System.out.print("Ingrese la posicion del solar a modificar: ");
+                    rm = new Scanner(System.in);
+                    int o = rm.nextInt();
+
+                    if (o >= 0 && o < bienes.size() && bienes.get(o) instanceof Solares) {
+                        bienes.remove(o);
+                        System.out.println("< SOLAR ELIMINADO >");
+                    }else {
+                        System.out.println("Posicion no valida");
+                    }
+                }
+
+            }
+        }
     }
 
 }
